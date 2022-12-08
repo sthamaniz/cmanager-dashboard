@@ -14,6 +14,11 @@ export const isHeroku = () => {
   return !!(hostname.indexOf('herokuapp') > -1);
 };
 
+export const isOnRender = () => {
+  const hostname = window.location.hostname;
+  return !!(hostname.indexOf('onrender') > -1);
+};
+
 export const isDev = () => {
   const hostname = window.location.hostname;
   return !!(hostname.indexOf('dev') > -1);
