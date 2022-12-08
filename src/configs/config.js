@@ -22,7 +22,7 @@ if (isLocalHost()) {
   config = {
     assetURL: 'https://cmanager-api.onrender.com/assets',
     graphURL: 'https://cmanager-api.onrender.com/graphql',
-    subscriptionURL: 'https://cmanager-api.onrender.com/subscriptions',
+    subscriptionURL: 'wss://cmanager-api.onrender.com/subscriptions',
     cookieDomain: 'cmanager-dashboard.onrender.com',
   };
 } else if (isDev()) {
