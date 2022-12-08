@@ -1,0 +1,90 @@
+@import 'assets/styles/main.scss';
+
+.customerbooking {
+  &_title {
+    font-weight: 600;
+    color: $primary-black;
+    font-size: 22px;
+    padding-top: 50px;
+  }
+
+  &_status {
+    padding: 20px;
+
+    .ant-steps {
+      .ant-steps-item {
+        .ant-steps-item-container {
+          .ant-steps-item-content {
+            .ant-steps-item-title {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &_list {
+    &_single {
+      margin-bottom: 10px;
+    }
+  }
+
+  &_create {
+    padding: 5px;
+
+    &_title {
+      text-transform: uppercase;
+    }
+
+    &_button {
+      text-align: center;
+      margin-top: 20px;
+
+      button {
+        background-color: $primary-green;
+        color: $primary-white;
+        font-size: 16px;
+        height: 45px;
+
+        &:active {
+          background-color: #59d12a;
+          color: #fff;
+        }
+
+        &:focus {
+          background-color: #59d12a;
+          color: #fff;
+        }
+
+        &:hover {
+          background-color: #59d12a;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  &_timeline {
+    padding: 5px;
+
+    &_title {
+      text-transform: uppercase;
+    }
+
+    &_list {
+      margin-top: 20px;
+
+      &_item {
+        font-size: 14px;
+
+        &_title {
+          color: $primary-grey;
+        }
+
+        &_description {
+        }
+      }
+    }
+  }
+}

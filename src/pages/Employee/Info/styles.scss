@@ -1,0 +1,73 @@
+.employeeinfo {
+
+  &_info {
+    &_image {
+      border-radius: 7px;
+      padding: 37px;
+      background-color: #F5F5F5;
+    }
+  
+    &_name {
+      font-size: 20px;
+      font-weight: 600;
+    }
+  
+    &_detail {
+      background-color: #eaeaea;
+      padding: 5px 10px;
+      border-radius: 2px;
+  
+      &_single {
+        display: flex;
+  
+        &_icon {
+          margin-right: 10px;
+        }
+  
+        &_value {
+          font-size: 18px;
+        }
+      }
+    }
+  
+    &_other {
+      margin-top: 10px;
+  
+      &_single {
+        &_title {
+          font-weight: bold;
+        }
+  
+        &_value {}
+      }
+    }
+  }
+
+  &_options {
+    padding: 20px;
+
+    &_list {
+      &_single {
+        background-color: #fff;
+        padding: 10px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        
+        &.active {
+          background-color: #1890ff;
+          color: #ffffff;
+        }
+        
+        &_icon {
+          margin-right: 3px;
+        }
+
+        &_value {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

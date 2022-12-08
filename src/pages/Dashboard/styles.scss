@@ -1,0 +1,120 @@
+.dashboard {
+  &_performance {
+    &_chart {
+      border-radius: 12px;
+      background-color: #4582b6;
+      padding: 12px;
+  
+      .recharts-responsive-container {
+        .recharts-wrapper {
+          .recharts-surface {
+            margin-left: -80px;
+            width: calc(100% + 70px);
+  
+            .recharts-cartesian-axis {
+              line {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &_title {
+      font-weight: 600;
+      padding: 10px 10px 0px 10px;
+    }
+
+    &_subtitle {
+      color: #bfbfbf;
+      padding: 0px 10px;
+      font-size: 12px;
+    }
+  }
+
+  &_sales {
+    &_chart {
+      border-radius: 12px;
+      background-color: #3f9967;
+      padding: 12px;
+
+      .recharts-responsive-container {
+        .recharts-wrapper {
+          .recharts-surface {
+            margin-left: -80px;
+            width: calc(100% + 70px);
+  
+            .recharts-cartesian-axis {
+              line {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &_title {
+      font-weight: 600;
+      padding: 10px 10px 0px 10px;
+    }
+
+    &_subtitle {
+      color: #bfbfbf;
+      padding: 0px 10px;
+      font-size: 12px;
+    }
+  }
+
+  &_task {
+    &_chart {
+      border-radius: 12px;
+      background-color: #181d21;
+      padding: 12px;
+
+      .recharts-responsive-container {
+        .recharts-wrapper {
+          .recharts-surface {
+            margin-left: -80px;
+            width: calc(100% + 70px);
+  
+            .recharts-cartesian-axis {
+              line {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &_title {
+      font-weight: 600;
+      padding: 10px 10px 0px 10px;
+    }
+
+    &_subtitle {
+      color: #bfbfbf;
+      padding: 0px 10px;
+      font-size: 12px;
+    }
+  }
+
+  &_behaviour {
+    border-radius: 12px;
+    margin-top: 30px;
+
+    .recharts-responsive-container {
+      .recharts-wrapper {
+        .recharts-surface {
+          .recharts-cartesian-axis {
+            line {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

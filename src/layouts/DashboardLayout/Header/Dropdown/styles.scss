@@ -1,0 +1,9 @@
+.dropdown {
+  &_title {
+    cursor: pointer;
+
+    svg {
+      margin-left: 5px;
+    }
+  }
+}

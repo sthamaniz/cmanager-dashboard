@@ -1,0 +1,17 @@
+.personalinfo {
+  &_options {
+    display: flex;
+
+    &_single {
+      padding: 10px;
+      margin-top: 5px;
+      cursor: pointer;
+
+      &.active {
+        background: #ffffff;
+        border-top: 5px solid #1890ff;
+        margin-top: 0px;
+      }
+    }
+  }
+}

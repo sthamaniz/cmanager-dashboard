@@ -1,0 +1,15 @@
+version: '2'
+services:
+  dashboard:
+    build: .
+    image: cmanager/dashboard:latest
+    container_name: cmanager_dashboard
+    restart: always
+    volumes: 
+      - ./src:/dashboard/src/
+      - ./public/:/dashboard/public/
+      - ./package.json:/dashboard/package.json
+      - ./yarn.lock:/dashboard/yarn.lock
+    restart: always
+    ports: 
+      - 3000:3000

@@ -1,0 +1,82 @@
+@import 'assets/styles/main.scss';
+
+.register {
+  padding: 100px;
+  background-color: $primary-white;
+  background-image: url('../../../assets/images/login-background.jpg');
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+
+  &_logo {
+    height: 100px;
+    width: 250px;
+    overflow: hidden;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &_header {
+    background-color: $primary-white;
+    border-radius: 100px;
+    padding: 20px;
+    box-shadow: $secondary-white 2px 5px 7px;
+    display: flex;
+    justify-content: center;
+
+    &_signup {
+      font-size: 16px;
+      font-weight: 600;
+
+      a {
+        color: $primary-black;
+
+        &:hover {
+          color: $primary-black;
+        }
+        
+        svg {
+          color: $primary-green;
+          margin-right: 5px;
+        }
+      }
+
+    }
+
+    &_signin {
+      font-size: 16px;
+      font-weight: 600;
+      margin-left: 20px;
+
+      a {
+        color: $primary-black;
+
+        &:hover {
+          color: $primary-black;
+        }
+        
+        svg {
+          color: $primary-green;
+          margin-bottom: -1px;
+          margin-right: 5px;
+        }
+      }
+
+    }
+  }
+
+  &_title {
+    font-size: 26px !important;
+    font-weight: 600 !important;
+    color: $primary-blue !important;
+  }
+
+  &_subtitle {
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    color: $primary-grey !important;
+  }
+}

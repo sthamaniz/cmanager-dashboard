@@ -1,0 +1,18 @@
+.tag {
+  .ant-tag {
+    border: none;
+    background-color: #F2F4F5;
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 4px 8px;
+    cursor: pointer;
+    color:  #000;
+  }
+
+  &.checked {
+    .ant-tag {
+      background-color: #00bdf3;
+      color: #fff
+    }
+  }
+}

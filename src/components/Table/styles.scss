@@ -1,0 +1,56 @@
+@import 'assets/styles/main.scss';
+
+.table {
+  table {
+    thead {
+      tr {
+        th {
+          padding: 12px !important;
+          background-color: $primary-white;
+          border-top: 1px solid $primary-grey;
+          border-bottom: 1px solid $primary-grey;
+          color: $primary-black;
+          font-weight: 600;
+
+          &:first-child {
+            border-left: 1px solid $primary-grey;
+            border-top-left-radius: 6px !important;
+            border-bottom-left-radius: 6px;
+          }
+
+          &:last-child {
+            border-right: 1px solid $primary-grey;
+            border-top-right-radius: 6px !important;
+            border-bottom-right-radius: 6px;
+          }
+
+          &::before {
+            display: none;
+          }
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        td {
+          padding: 12px;
+          background-color: $primary-white;
+          border: none;
+
+          .ant-typography {
+            color: $primary-grey;
+          }
+
+          .edit_buttom {
+            color: $primary-blue;
+          }
+
+          .delete_button {
+            color: $primary-red;
+          }
+        }
+      }
+    }
+  }
+}

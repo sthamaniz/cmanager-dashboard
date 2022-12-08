@@ -1,0 +1,31 @@
+.ant-drawer {
+  .ant-drawer-body {
+    background-color: #00BDF2;
+  }
+}
+
+.detail {
+  &_single {
+    padding: 10px;
+    color: #ffffff;
+    display: flex;
+    
+    &_icon {
+      margin-right: 10px;
+      color: #FAFF00;
+      font-size: 18px;
+    }
+
+    &_info {
+      &_title {
+        font-size: 18px;
+        font-weight: bold;
+      }
+      
+      &_value {
+        font-size: 16px;
+      }
+    }
+
+  }
+}
