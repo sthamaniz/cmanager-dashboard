@@ -11,6 +11,7 @@ import Table from 'components/Table';
 import Loader from 'components/Loader';
 import DateInput from 'components/Input/DateInput';
 import Detail from '../Detail';
+import ExcelOptions from '../ExcelOptions';
 
 import './styles.scss';
 
@@ -184,8 +185,8 @@ export default ({}) => {
         bordered={false}
         className="criclebox tablespace mb-24"
         title={
-          <Row>
-            <Col md={16}>Roster List</Col>
+          <Row gutter={[8, 8]}>
+            <Col md={13}>Roster List</Col>
             <Col md={8}>
               <DateInput
                 name="date"
@@ -193,6 +194,13 @@ export default ({}) => {
                 onChange={(date) => setSelectedDate(date)}
                 defaultValue={selectedDate}
                 range={true}
+              />
+            </Col>
+            <Col md={3}>
+              <ExcelOptions
+                loading={rostersLoading || usersLoading}
+                rosterData={rostersResult}
+                userData={usersResult}
               />
             </Col>
           </Row>
