@@ -179,6 +179,64 @@ export default ({ history }) => {
                 ]}
               />
             </Col>
+            <Col md={12}>
+              <TextInput
+                label="ABN (Australian Business Number)"
+                name="australianBusinessNumber"
+                placeholder="ABN (Australian Business Number)"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input ABN!',
+                  },
+                ]}
+              />
+            </Col>
+            <Col md={12}>
+              <TextInput
+                label="TFN (Tax File Number)"
+                name="taxFileNumber"
+                placeholder="TFN (Tax File Number)"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input TFN!',
+                  },
+                ]}
+              />
+            </Col>
+            <Col md={12}>
+              <SelectInput
+                label="ID Type"
+                name="isType"
+                placeholder="ID Type"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input ID Type!',
+                  },
+                ]}
+                options={[
+                  {
+                    title: 'Driving License',
+                    value: 'DRIVING_LICENSE',
+                  },
+                ]}
+              />
+            </Col>
+            <Col md={12}>
+              <TextInput
+                label="ID Number"
+                name="idNumber"
+                placeholder="ID Number"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input ID Number!',
+                  },
+                ]}
+              />
+            </Col>
             <Col md={24}>
               <SelectInput
                 label="Status"

@@ -12,34 +12,45 @@ export default ({
   disabled,
   icon,
 }) => {
-  return (
-    <Form.Item
-      className="username textinput"
-      label={label}
-      name={name}
-      rules={rules}
-    >
-      {type === 'textarea' ? (
+  if (type === 'textarea') {
+    return (
+      <Form.Item
+        className="username textinput"
+        label={label}
+        name={name}
+        rules={rules}
+      >
         <Input.TextArea row={5} disabled={disabled} />
-      ) : (
-        <div className="textinput_input">
-          {icon ? (
-            <div className="textinput_input_icon">
-              <FontAwesomeIcon icon={icon} />
-            </div>
-          ) : null}
-          <div
-            className="textinput_input_field"
-            style={{ paddingLeft: icon ? 45 : 0 }}
+      </Form.Item>
+    );
+  }
+
+  return (
+    <div className="textinput">
+      <div className="textinput_input">
+        {icon ? (
+          <div className="textinput_input_icon">
+            <FontAwesomeIcon icon={icon} />
+          </div>
+        ) : null}
+        <div
+          className="textinput_input_field"
+          style={{ paddingLeft: icon ? 45 : 0 }}
+        >
+          <Form.Item
+            className="username"
+            label={label}
+            name={name}
+            rules={rules}
           >
             <Input
               type={type}
               placeholder={placeholder}
               disabled={disabled}
             />
-          </div>
+          </Form.Item>
         </div>
-      )}
-    </Form.Item>
+      </div>
+    </div>
   );
 };

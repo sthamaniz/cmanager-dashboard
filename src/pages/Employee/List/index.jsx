@@ -137,7 +137,7 @@ export default ({}) => {
       dataIndex: 'action',
       render: (_, record) => (
         <>
-          <Link
+          {/* <Link
             to={routeConfig.employeeDetail.path.replace(
               ':id',
               record._id,
@@ -147,7 +147,7 @@ export default ({}) => {
               icon={faEye}
               style={{ color: '#324565', marginRight: '5px' }}
             />
-          </Link>{' '}
+          </Link>{' '} */}
           <Link
             to={routeConfig.employeeUpdate.path.replace(
               ':id',

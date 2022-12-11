@@ -13,6 +13,10 @@ const query = `
       displayPicture
       source
       hours
+      australianBusinessNumber
+      taxFileNumber
+      idType
+      idNumber
       status
     }
   }
