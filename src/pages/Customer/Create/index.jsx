@@ -123,7 +123,7 @@ export default ({ history }) => {
                 ]}
               />
             </Col>
-            <Col md={12}>
+            {/* <Col md={12}>
               <SelectInput
                 label="Gender"
                 name="gender"
@@ -140,7 +140,7 @@ export default ({ history }) => {
                   { title: 'Other', value: 'OTHER' },
                 ]}
               />
-            </Col>
+            </Col> */}
             <Col md={12}>
               <TextInput
                 label="Mobile"

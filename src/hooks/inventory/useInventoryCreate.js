@@ -1,8 +1,8 @@
 import useGraphQLMutation from 'hooks/common/useGraphQLMutation';
 
 const query = `
-  InventoryCreate($title: String!, $description: String!, $quantity: String!, $price: String!, $status: Status!) {
-    inventoryCreate(title: $title, description: $description, quantity: $quantity, price: $price, status: $status) {
+  InventoryCreate($title: String!, $description: String!, $unit: String!, $quantity: String!, $price: String!, $status: Status!) {
+    inventoryCreate(title: $title, description: $description, unit: $unit, quantity: $quantity, price: $price, status: $status) {
       _id
     }
   }

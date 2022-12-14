@@ -105,6 +105,19 @@ export default ({ history, match }) => {
             </Col>
             <Col md={12}>
               <TextInput
+                label="Unit"
+                name="unit"
+                placeholder="unit"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input unit!',
+                  },
+                ]}
+              />
+            </Col>
+            <Col md={12}>
+              <TextInput
                 label="Quantity"
                 name="quantity"
                 placeholder="Quantity"
@@ -129,7 +142,7 @@ export default ({ history, match }) => {
                 ]}
               />
             </Col>
-            <Col md={24}>
+            <Col md={12}>
               <SelectInput
                 label="Status"
                 name="status"

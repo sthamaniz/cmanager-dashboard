@@ -77,6 +77,14 @@ export default ({}) => {
       ),
     },
     {
+      title: 'Unit',
+      dataIndex: 'unit',
+      key: 'unit',
+      render: (value) => (
+        <Typography.Title level={5}>{value}</Typography.Title>
+      ),
+    },
+    {
       title: 'Price',
       dataIndex: 'price',
       key: 'price',

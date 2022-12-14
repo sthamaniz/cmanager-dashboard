@@ -29,7 +29,7 @@ export default ({ history, match }) => {
           email: userByIdResult.email,
           firstName: userByIdResult.firstName,
           lastName: userByIdResult.lastName,
-          gender: userByIdResult.gender,
+          // gender: userByIdResult.gender,
           mobile: userByIdResult.mobile,
           address: userByIdResult.address,
           source: userByIdResult.source,
@@ -137,7 +137,7 @@ export default ({ history, match }) => {
                 ]}
               />
             </Col>
-            <Col md={12}>
+            {/* <Col md={12}>
               <SelectInput
                 label="Gender"
                 name="gender"
@@ -154,7 +154,7 @@ export default ({ history, match }) => {
                   { title: 'Other', value: 'OTHER' },
                 ]}
               />
-            </Col>
+            </Col> */}
             <Col md={12}>
               <TextInput
                 label="Mobile"

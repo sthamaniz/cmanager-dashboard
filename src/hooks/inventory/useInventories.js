@@ -7,6 +7,7 @@ const query = `
       title
       slug
       description
+      unit
       quantity
       price
       status

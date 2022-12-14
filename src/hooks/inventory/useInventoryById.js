@@ -6,6 +6,7 @@ const query = `
       _id
       title
       description
+      unit
       quantity
       price
       status
