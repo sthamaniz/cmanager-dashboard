@@ -14,6 +14,7 @@ import {
   faEdit,
   faTrash,
   faSearch,
+  faEnvelope,
 } from '@fortawesome/free-solid-svg-icons';
 
 import useUsers from 'hooks/user/useUsers';
@@ -28,11 +29,14 @@ import Loader from 'components/Loader';
 import Modal from 'components/Modal';
 
 import './styles.scss';
+import Notification from '../Notification';
 
 export default ({}) => {
   const [form] = Form.useForm();
 
-  const [deleteId, D] = useState('');
+  const [deleteId, setDeleteId] = useState('');
+
+  const [selectedCustomer, setSelectedCustomer] = useState({});
 
   const { usersTrigger, usersResult, usersLoading } = useUsers();
 
@@ -147,6 +151,11 @@ export default ({}) => {
             style={{ color: '#324565', marginRight: '5px' }}
             onClick={() => setDeleteId(`${record._id}`)}
           />
+          {/* <FontAwesomeIcon
+            icon={faEnvelope}
+            onClick={() => setSelectedCustomer(record)}
+            style={{ cursor: 'pointer' }}
+          /> */}
         </>
       ),
     },
@@ -216,6 +225,10 @@ export default ({}) => {
         handleOK={() => userDeleteByIdTrigger({ id: deleteId })}
         loading={userDeleteByIdLoading}
         handleCancel={() => D('')}
+      />
+      <Notification
+        selectedCustomer={selectedCustomer}
+        setSelectedCustomer={setSelectedCustomer}
       />
     </>
   );
