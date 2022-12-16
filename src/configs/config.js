@@ -4,9 +4,9 @@ let config;
 if (isLocalHost()) {
   //LOCAL config
   config = {
-    assetURL: 'https://cmanager-api.onrender.com/assets',
-    graphURL: 'https://cmanager-api.onrender.com/graphql',
-    subscriptionURL: 'wss://cmanager-api.onrender.com/subscriptions',
+    assetURL: 'http://localhost:8080/assets',
+    graphURL: 'http://localhost:8080/graphql',
+    subscriptionURL: 'wss://localhost:8080/subscriptions',
     cookieDomain: 'localhost',
   };
 } else if (isHeroku()) {

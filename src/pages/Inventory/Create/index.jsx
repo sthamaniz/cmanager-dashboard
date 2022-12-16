@@ -7,6 +7,7 @@ import { routeConfig } from 'Routes/config';
 
 import TextInput from 'components/Input/TextInput';
 import SelectInput from 'components/Input/SelectInput';
+import NumberInput from 'components/Input/NumberInput';
 
 import './styles.scss';
 
@@ -23,6 +24,12 @@ export default ({ history }) => {
     inventoryCreateError,
   } = useInventoryCreate();
   const submitFormData = (formData) => {
+    if (formData.quantity) {
+      formData.quantity = parseInt(formData.quantity);
+    }
+    if (formData.price) {
+      formData.price = parseInt(formData.price);
+    }
     setError('');
     setLoading(true);
     inventoryCreateTrigger(formData);
@@ -59,7 +66,20 @@ export default ({ history }) => {
           onFinish={submitFormData}
         >
           <Row gutter={[24, 0]}>
-            <Col md={24}>
+            <Col md={12}>
+              <TextInput
+                label="Item Number"
+                name="itemNumber"
+                placeholder="Item Number"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input item number!',
+                  },
+                ]}
+              />
+            </Col>
+            <Col md={12}>
               <TextInput
                 label="Title"
                 name="title"
@@ -104,6 +124,10 @@ export default ({ history }) => {
                     required: true,
                     message: 'Please input quantity!',
                   },
+                  {
+                    pattern: /^(?:\d*)$/,
+                    message: 'Value should contain just number',
+                  },
                 ]}
               />
             </Col>
@@ -116,6 +140,10 @@ export default ({ history }) => {
                   {
                     required: true,
                     message: 'Please input price!',
+                  },
+                  {
+                    pattern: /^(?:\d*)$/,
+                    message: 'Value should contain just number',
                   },
                 ]}
               />

@@ -414,7 +414,7 @@ export default ({ history }) => {
             <Col md={12}>
               <SelectInput
                 name="status"
-                placeholder="Statis"
+                placeholder="Status"
                 rules={[
                   {
                     required: true,

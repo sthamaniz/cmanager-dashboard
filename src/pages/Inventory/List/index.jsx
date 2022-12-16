@@ -15,6 +15,7 @@ import {
   faTrash,
   faSearch,
 } from '@fortawesome/free-solid-svg-icons';
+import Moment from 'moment';
 
 import useInventories from 'hooks/inventory/useInventories';
 import useInventoryDeleteById from 'hooks/inventory/useInventoryDeleteById';
@@ -57,6 +58,18 @@ export default ({}) => {
       ),
     },
     {
+      title: 'Item Number',
+      dataIndex: 'itemNumber',
+      key: 'itemNumber',
+      render: (_, record) => (
+        <div className="avatar-info">
+          <Typography.Title level={5}>
+            {record.itemNumber}
+          </Typography.Title>
+        </div>
+      ),
+    },
+    {
       title: 'Title',
       dataIndex: 'title',
       key: 'title',
@@ -90,6 +103,16 @@ export default ({}) => {
       key: 'price',
       render: (value) => (
         <Typography.Title level={5}>{value}</Typography.Title>
+      ),
+    },
+    {
+      title: 'Entry Date',
+      dataIndex: 'createdAt',
+      key: 'createdAt',
+      render: (value) => (
+        <Typography.Title level={5}>
+          {Moment(value).format('DD MMM, YYYY')}
+        </Typography.Title>
       ),
     },
     {

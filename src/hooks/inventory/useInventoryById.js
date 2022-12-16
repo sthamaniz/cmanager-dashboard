@@ -4,12 +4,14 @@ const query = `
   InventoryById($id: String!) {
     inventoryById(id: $id) {
       _id
+      itemNumber
       title
       description
       unit
       quantity
       price
       status
+      createdAt
     }
   }
 `;

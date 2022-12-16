@@ -1,4 +1,4 @@
-.textinput {
+.numberinput {
   &_input {
     display: flex;
     margin-bottom: 24px;
@@ -25,12 +25,9 @@
         margin-bottom: 0px !important;
         
         .ant-form-item-control {
-
-          .ant-form-item-control-input {
-            border: 1px solid #d9d9d9;
-            border-radius: 6px;
-            padding: 5px 10px;
-          }
+          border: 1px solid #d9d9d9;
+          border-radius: 6px;
+          padding: 5px 10px;
         }
       }
 
@@ -41,6 +38,10 @@
         font-size: 18px;
         height: 27px;
         margin-top: 2px;
+      }
+
+      .ant-input-number {
+        border: none !important
       }
 
       input:focus {

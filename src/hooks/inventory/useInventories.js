@@ -4,6 +4,7 @@ const query = `
   Inventories {
     inventories {
       _id
+      itemNumber
       title
       slug
       description
@@ -11,6 +12,7 @@ const query = `
       quantity
       price
       status
+      createdAt
     }
   }
 `;

@@ -25,6 +25,7 @@ export default ({ history, match }) => {
     if (!inventoryByIdLoading) {
       if (inventoryByIdResult) {
         form.setFieldsValue({
+          itemNumber: inventoryByIdResult.itemNumber,
           title: inventoryByIdResult.title,
           description: inventoryByIdResult.description,
           quantity: inventoryByIdResult.quantity,
@@ -43,6 +44,12 @@ export default ({ history, match }) => {
   } = useInventoryUpdateById();
   const submitFormData = (formData) => {
     formData.id = urlId;
+    if (formData.quantity) {
+      formData.quantity = parseInt(formData.quantity);
+    }
+    if (formData.price) {
+      formData.price = parseInt(formData.price);
+    }
 
     setError('');
     setLoading(true);
@@ -81,7 +88,20 @@ export default ({ history, match }) => {
           onFinish={submitFormData}
         >
           <Row gutter={[24, 0]}>
-            <Col md={24}>
+            <Col md={12}>
+              <TextInput
+                label="Item Number"
+                name="itemNumber"
+                placeholder="Item Number"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input item number!',
+                  },
+                ]}
+              />
+            </Col>
+            <Col md={12}>
               <TextInput
                 label="Title"
                 name="title"
@@ -126,6 +146,10 @@ export default ({ history, match }) => {
                     required: true,
                     message: 'Please input quantity!',
                   },
+                  {
+                    pattern: /^(?:\d*)$/,
+                    message: 'Value should contain just number',
+                  },
                 ]}
               />
             </Col>
@@ -138,6 +162,10 @@ export default ({ history, match }) => {
                   {
                     required: true,
                     message: 'Please input price!',
+                  },
+                  {
+                    pattern: /^(?:\d*)$/,
+                    message: 'Value should contain just number',
                   },
                 ]}
               />
