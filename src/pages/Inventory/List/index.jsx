@@ -111,7 +111,7 @@ export default ({}) => {
       key: 'createdAt',
       render: (value) => (
         <Typography.Title level={5}>
-          {Moment(value).format('DD MMM, YYYY')}
+          {Moment.unix(value).format('DD MMM, YYYY')}
         </Typography.Title>
       ),
     },
