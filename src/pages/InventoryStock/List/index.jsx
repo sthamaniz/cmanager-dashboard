@@ -17,8 +17,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import Moment from 'moment';
 
-import useInventories from 'hooks/inventory/useInventories';
-import useInventoryDeleteById from 'hooks/inventory/useInventoryDeleteById';
+import useInventoryStocks from 'hooks/inventoryStock/useInventoryStocks';
+import useInventoryStockDeleteById from 'hooks/inventoryStock/useInventoryStockDeleteById';
 
 import { routeConfig } from 'Routes/config';
 
@@ -36,17 +36,19 @@ export default ({}) => {
   const [deleteId, setDeleteId] = useState('');
 
   const {
-    inventoriesTrigger,
-    inventoriesResult,
-    inventoriesLoading,
-  } = useInventories();
+    inventoryStocksTrigger,
+    inventoryStockResult,
+    inventoryStocksLoading,
+  } = useInventoryStocks();
 
   useEffect(() => {
-    inventoriesTrigger();
+    inventoryStocksTrigger();
   }, []);
 
-  const { inventoryDeleteByIdTrigger, inventoryDeleteByIdLoading } =
-    useInventoryDeleteById();
+  const {
+    inventoryStockDeleteByIdTrigger,
+    inventoryStockDeleteByIdLoading,
+  } = useInventoryStockDeleteById();
 
   const columns = [
     {
@@ -64,7 +66,7 @@ export default ({}) => {
       render: (_, record) => (
         <div className="avatar-info">
           <Typography.Title level={5}>
-            {record.itemNumber}
+            {record.inventory.itemNumber}
           </Typography.Title>
         </div>
       ),
@@ -76,7 +78,7 @@ export default ({}) => {
       render: (_, record) => (
         <div className="avatar-info">
           <Typography.Title level={5}>
-            {record.title}
+            {record.inventory.title}
           </Typography.Title>
         </div>
       ),
@@ -90,38 +92,23 @@ export default ({}) => {
       ),
     },
     {
-      title: 'Unit',
-      dataIndex: 'unit',
-      key: 'unit',
+      title: 'Type',
+      dataIndex: 'type',
+      key: 'type',
       render: (value) => (
-        <Typography.Title level={5}>{value}</Typography.Title>
+        <Typography.Title level={5}>
+          {value === 'IN' ? 'entry' : 'dispatch'}
+        </Typography.Title>
       ),
     },
     {
-      title: 'Price',
-      dataIndex: 'price',
-      key: 'price',
+      title: 'Date',
+      dataIndex: 'createdAt',
+      key: 'createdAt',
       render: (value) => (
-        <Typography.Title level={5}>{value}</Typography.Title>
-      ),
-    },
-    {
-      title: 'Status',
-      key: 'status',
-      dataIndex: 'status',
-      render: (value) => (
-        <Badge
-          count={value.toLowerCase()}
-          style={{
-            backgroundColor:
-              value.toLowerCase() === 'active'
-                ? '#04b049d9'
-                : '#222c26d9',
-            fontSize: '14px',
-            textTransform: 'capitalize',
-            minWidth: '75px',
-          }}
-        />
+        <Typography.Title level={5}>
+          {Moment.unix().format('DD MMM, YYYY')}
+        </Typography.Title>
       ),
     },
     {
@@ -130,17 +117,6 @@ export default ({}) => {
       dataIndex: 'action',
       render: (_, record) => (
         <>
-          <Link
-            to={routeConfig.inventoryUpdate.path.replace(
-              ':id',
-              record._id,
-            )}
-          >
-            <FontAwesomeIcon
-              icon={faEdit}
-              style={{ color: '#324565', marginRight: '5px' }}
-            />
-          </Link>{' '}
           <FontAwesomeIcon
             icon={faTrash}
             style={{ color: '#324565', marginRight: '5px' }}
@@ -152,7 +128,7 @@ export default ({}) => {
   ];
 
   const submitSearchData = (data) => {
-    inventoriesTrigger(data);
+    inventoryStocksTrigger(data);
   };
 
   return (
@@ -160,7 +136,7 @@ export default ({}) => {
       <Card
         bordered={false}
         className="criclebox tablespace mb-24"
-        title={'Inventory List'}
+        title={'Inventory Stocks'}
       >
         <div className="inventory">
           <div className="inventory_options">
@@ -187,21 +163,22 @@ export default ({}) => {
                 </Col>
                 <Col md={10}></Col>
                 <Col md={4}>
-                  <PrimaryButton
-                    title="Add Inventory"
+                  {/* <PrimaryButton
+                    title="Add Inventory Stock"
                     link={routeConfig.inventoryCreate.path}
-                  />
+                  /> */}
                 </Col>
               </Row>
             </Form>
           </div>
-          {inventoriesLoading || inventoryDeleteByIdLoading ? (
+          {inventoryStocksLoading ||
+          inventoryStockDeleteByIdLoading ? (
             <Loader />
           ) : null}
           <div className="table-responsive">
             <Table
               columns={columns}
-              data={inventoriesResult}
+              data={inventoryStockResult}
               rowKey="title"
             />
           </div>
@@ -211,10 +188,14 @@ export default ({}) => {
         isModalVisible={deleteId && deleteId !== ''}
         title="Are You Sure?"
         body={'You cannot undo this once deleted.'}
-        handleOK={() => inventoryDeleteByIdTrigger({ id: deleteId })}
-        loading={inventoryDeleteByIdLoading}
+        handleOK={() =>
+          inventoryStockDeleteByIdTrigger({ id: deleteId })
+        }
+        loading={inventoryStockDeleteByIdLoading}
         handleCancel={() => setDeleteId('')}
       />
     </>
   );
 };
+
+// /prod/admin-dashboard/images/ticket/event/eventId

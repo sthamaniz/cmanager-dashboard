@@ -34,6 +34,7 @@ import CustomerBookingCreate from 'pages/CustomerBooking/Create';
 import EmployeeRosterList from 'pages/EmployeeRoster/List';
 import RosterList from 'pages/Roster/List';
 import EmployeeInfo from 'pages/Employee/Info';
+import InventoryStockList from 'pages/InventoryStock/List';
 
 export const routeConfig = {
   dashboard: {
@@ -160,8 +161,12 @@ export const routeConfig = {
       icon: faWarehouse,
       child: [
         {
-          title: 'Inventory',
+          title: 'List',
           path: '/inventory',
+        },
+        {
+          title: 'Stock',
+          path: '/inventory-stock',
         },
       ],
     },
@@ -176,6 +181,12 @@ export const routeConfig = {
     type: 'private',
     path: '/inventory/:id/update',
     component: InventoryUpdate,
+    roles: ['SUPERADMIN', 'ADMIN'],
+  },
+  inventoryStock: {
+    type: 'private',
+    path: '/inventory-stock',
+    component: InventoryStockList,
     roles: ['SUPERADMIN', 'ADMIN'],
   },
   //customer routes

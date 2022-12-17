@@ -11,7 +11,6 @@ const query = `
       quantity
       price
       status
-      createdAt
     }
   }
 `;
