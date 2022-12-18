@@ -28,7 +28,7 @@ export default ({ history, match }) => {
           itemNumber: inventoryByIdResult.itemNumber,
           title: inventoryByIdResult.title,
           description: inventoryByIdResult.description,
-          quantity: inventoryByIdResult.quantity,
+          // quantity: inventoryByIdResult.quantity,
           price: inventoryByIdResult.price,
           status: inventoryByIdResult.status,
         });
@@ -127,7 +127,7 @@ export default ({ history, match }) => {
               <TextInput
                 label="Unit"
                 name="unit"
-                placeholder="unit"
+                placeholder="Unit"
                 rules={[
                   {
                     required: true,
@@ -136,7 +136,7 @@ export default ({ history, match }) => {
                 ]}
               />
             </Col>
-            <Col md={12}>
+            {/* <Col md={12}>
               <TextInput
                 label="Quantity"
                 name="quantity"
@@ -152,7 +152,7 @@ export default ({ history, match }) => {
                   },
                 ]}
               />
-            </Col>
+            </Col> */}
             <Col md={12}>
               <TextInput
                 label="Price"
@@ -170,7 +170,7 @@ export default ({ history, match }) => {
                 ]}
               />
             </Col>
-            <Col md={12}>
+            <Col md={24}>
               <SelectInput
                 label="Status"
                 name="status"

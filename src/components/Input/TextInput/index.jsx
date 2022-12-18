@@ -34,8 +34,7 @@ export default ({
           </div>
         ) : null}
         <div
-          className="textinput_input_field"
-          style={{ paddingLeft: icon ? 45 : 0 }}
+          className={`textinput_input_field ${icon ? 'icon' : ''}`}
         >
           <Form.Item
             className="username"

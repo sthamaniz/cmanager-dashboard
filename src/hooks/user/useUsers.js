@@ -3,21 +3,26 @@ import useGraphQLLazyQuery from 'hooks/common/useGraphQLLazyQuery';
 export const query = `
   Users($search: String, $role: UserRole!) {
     users(search: $search, role: $role) {
-      _id
-      email
-      firstName
-      lastName
-      gender
-      mobile
-      address
-      displayPicture
-      source
-      hours
-      australianBusinessNumber
-      taxFileNumber
-      idType
-      idNumber
-      status
+      page
+      limit
+      total
+      data {
+        _id
+        email
+        firstName
+        lastName
+        gender
+        mobile
+        address
+        displayPicture
+        source
+        hours
+        australianBusinessNumber
+        taxFileNumber
+        idType
+        idNumber
+        status
+      }
     }
   }
 `;

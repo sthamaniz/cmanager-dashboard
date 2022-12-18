@@ -105,7 +105,7 @@ export default ({ history }) => {
               <TextInput
                 label="Unit"
                 name="unit"
-                placeholder="unit"
+                placeholder="Unit"
                 rules={[
                   {
                     required: true,
@@ -114,7 +114,7 @@ export default ({ history }) => {
                 ]}
               />
             </Col>
-            <Col md={12}>
+            {/* <Col md={12}>
               <TextInput
                 label="Quantity"
                 name="quantity"
@@ -130,7 +130,7 @@ export default ({ history }) => {
                   },
                 ]}
               />
-            </Col>
+            </Col> */}
             <Col md={12}>
               <TextInput
                 label="Price"
@@ -148,7 +148,7 @@ export default ({ history }) => {
                 ]}
               />
             </Col>
-            <Col md={12}>
+            <Col md={24}>
               <SelectInput
                 label="Status"
                 name="status"

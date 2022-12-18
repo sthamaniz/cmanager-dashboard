@@ -220,7 +220,7 @@ export default ({}) => {
           <div className="table-responsive">
             <Table
               columns={columns}
-              data={usersResult}
+              data={(usersResult && usersResult.data) || []}
               rowKey="email"
             />
           </div>
