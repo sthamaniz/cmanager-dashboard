@@ -28,7 +28,9 @@ export default ({ history, match }) => {
           itemNumber: inventoryByIdResult.itemNumber,
           title: inventoryByIdResult.title,
           description: inventoryByIdResult.description,
+          unit: inventoryByIdResult.unit,
           // quantity: inventoryByIdResult.quantity,
+          lowStockQuantity: inventoryByIdResult.lowStockQuantity,
           price: inventoryByIdResult.price,
           status: inventoryByIdResult.status,
         });
@@ -47,10 +49,12 @@ export default ({ history, match }) => {
     if (formData.quantity) {
       formData.quantity = parseInt(formData.quantity);
     }
+    if (formData.lowStockQuantity) {
+      formData.lowStockQuantity = parseInt(formData.lowStockQuantity);
+    }
     if (formData.price) {
       formData.price = parseInt(formData.price);
     }
-
     setError('');
     setLoading(true);
     inventoryUpdateByIdTrigger(formData);
@@ -155,6 +159,23 @@ export default ({ history, match }) => {
             </Col> */}
             <Col md={12}>
               <TextInput
+                label="Low Stock Quantity"
+                name="lowStockQuantity"
+                placeholder="Low Stock Quantity"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input lowStockQuantity!',
+                  },
+                  {
+                    pattern: /^(?:\d*)$/,
+                    message: 'Value should contain just number',
+                  },
+                ]}
+              />
+            </Col>
+            <Col md={12}>
+              <TextInput
                 label="Price"
                 name="price"
                 placeholder="Price"
@@ -170,7 +191,7 @@ export default ({ history, match }) => {
                 ]}
               />
             </Col>
-            <Col md={24}>
+            <Col md={12}>
               <SelectInput
                 label="Status"
                 name="status"

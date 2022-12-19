@@ -10,6 +10,7 @@ const query = `
       description
       unit
       quantity
+      lowStockQuantity
       price
       status
     }

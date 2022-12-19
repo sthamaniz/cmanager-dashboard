@@ -106,6 +106,14 @@ export default ({}) => {
       ),
     },
     {
+      title: 'Low Stock Quantity',
+      dataIndex: 'lowStockQuantity',
+      key: 'lowStockQuantity',
+      render: (value) => (
+        <Typography.Title level={5}>{value}</Typography.Title>
+      ),
+    },
+    {
       title: 'Status',
       key: 'status',
       dataIndex: 'status',
