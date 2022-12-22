@@ -17,8 +17,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import Moment from 'moment';
 
-import useInventoryStocks from 'hooks/inventoryStock/useInventoryStocks';
-import useInventoryStockDeleteById from 'hooks/inventoryStock/useInventoryStockDeleteById';
+import useInventoryServices from 'hooks/inventoryService/useInventoryServices';
+import useInventoryServiceDeleteById from 'hooks/inventoryService/useInventoryServiceDeleteById';
 
 import { routeConfig } from 'Routes/config';
 
@@ -30,34 +30,25 @@ import Modal from 'components/Modal';
 
 import './styles.scss';
 
-const DUMMY_DATA = [
-  {
-    title: 'One',
-  },
-  {
-    title: 'Two',
-  },
-];
-
 export default ({}) => {
   const [form] = Form.useForm();
 
   const [deleteId, setDeleteId] = useState('');
 
   const {
-    inventoryStocksTrigger,
-    inventoryStockResult,
-    inventoryStocksLoading,
-  } = useInventoryStocks();
+    inventoryServicesTrigger,
+    inventoryServicesResult,
+    inventoryServicesLoading,
+  } = useInventoryServices();
 
   useEffect(() => {
-    inventoryStocksTrigger();
+    inventoryServicesTrigger();
   }, []);
 
   const {
-    inventoryStockDeleteByIdTrigger,
-    inventoryStockDeleteByIdLoading,
-  } = useInventoryStockDeleteById();
+    inventoryServiceDeleteByIdTrigger,
+    inventoryServiceDeleteByIdLoading,
+  } = useInventoryServiceDeleteById();
 
   const columns = [
     {
@@ -74,7 +65,9 @@ export default ({}) => {
       key: 'itemNumber',
       render: (_, record) => (
         <div className="avatar-info">
-          <Typography.Title level={5}>123123123</Typography.Title>
+          <Typography.Title level={5}>
+            {record.inventory.itemNumber}
+          </Typography.Title>
         </div>
       ),
     },
@@ -84,24 +77,28 @@ export default ({}) => {
       key: 'title',
       render: (_, record) => (
         <div className="avatar-info">
-          <Typography.Title level={5}>Floor Cleaner</Typography.Title>
+          <Typography.Title level={5}>
+            {record.inventory.title}
+          </Typography.Title>
         </div>
       ),
     },
     {
-      title: 'Purchase Date',
-      dataIndex: 'createdAt',
-      key: 'createdAt',
+      title: 'Note',
+      dataIndex: 'note',
+      key: 'note',
       render: (value) => (
-        <Typography.Title level={5}>15 May, 2022</Typography.Title>
+        <Typography.Title level={5}>{value}</Typography.Title>
       ),
     },
     {
-      title: 'Service Period',
-      dataIndex: 'servicePeriod',
-      key: 'servicePeriod',
+      title: 'Date',
+      dataIndex: 'createdAt',
+      key: 'createdAt',
       render: (value) => (
-        <Typography.Title level={5}>15 Days</Typography.Title>
+        <Typography.Title level={5}>
+          {Moment.unix(value / 1000).format('DD MMM, YYYY')}
+        </Typography.Title>
       ),
     },
     {
@@ -121,7 +118,7 @@ export default ({}) => {
   ];
 
   const submitSearchData = (data) => {
-    inventoryStocksTrigger(data);
+    inventoryServicesTrigger(data);
   };
 
   return (
@@ -154,24 +151,24 @@ export default ({}) => {
                     Search
                   </Button>
                 </Col>
-                <Col md={10}></Col>
-                <Col md={4}>
-                  {/* <PrimaryButton
-                    title="Add Inventory Stock"
-                    link={routeConfig.inventoryCreate.path}
-                  /> */}
+                <Col md={8}></Col>
+                <Col md={6}>
+                  <PrimaryButton
+                    title="Update Inventory Stock"
+                    link={routeConfig.inventoryServiceCreate.path}
+                  />
                 </Col>
               </Row>
             </Form>
           </div>
-          {inventoryStocksLoading ||
-          inventoryStockDeleteByIdLoading ? (
+          {inventoryServicesLoading ||
+          inventoryServiceDeleteByIdLoading ? (
             <Loader />
           ) : null}
           <div className="table-responsive">
             <Table
               columns={columns}
-              data={DUMMY_DATA}
+              data={inventoryServicesResult}
               rowKey="title"
             />
           </div>
@@ -182,9 +179,9 @@ export default ({}) => {
         title="Are You Sure?"
         body={'You cannot undo this once deleted.'}
         handleOK={() =>
-          inventoryStockDeleteByIdTrigger({ id: deleteId })
+          inventoryServiceDeleteByIdTrigger({ id: deleteId })
         }
-        loading={inventoryStockDeleteByIdLoading}
+        loading={inventoryServiceDeleteByIdLoading}
         handleCancel={() => setDeleteId('')}
       />
     </>
