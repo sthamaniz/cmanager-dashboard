@@ -27,6 +27,20 @@ export default ({ history }) => {
   const submitFormData = (formData) => {
     formData.role = 'EMPLOYEE';
 
+    if (formData.taxFileNumber) {
+      formData.taxFileNumber = parseInt(formData.taxFileNumber);
+    }
+
+    if (formData.australianBusinessNumber) {
+      formData.australianBusinessNumber = parseInt(
+        formData.australianBusinessNumber,
+      );
+    }
+
+    if (formData.idNumber) {
+      formData.idNumber = parseInt(formData.idNumber);
+    }
+
     setError('');
     setLoading(true);
     userRegisterTrigger(formData);
@@ -184,12 +198,7 @@ export default ({ history }) => {
                 label="ABN (Australian Business Number)"
                 name="australianBusinessNumber"
                 placeholder="ABN (Australian Business Number)"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Please input ABN!',
-                  },
-                ]}
+                rules={[]}
               />
             </Col>
             <Col md={12}>
@@ -197,12 +206,7 @@ export default ({ history }) => {
                 label="TFN (Tax File Number)"
                 name="taxFileNumber"
                 placeholder="TFN (Tax File Number)"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Please input TFN!',
-                  },
-                ]}
+                rules={[]}
               />
             </Col>
             <Col md={12}>

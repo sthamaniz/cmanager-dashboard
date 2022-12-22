@@ -52,6 +52,20 @@ export default ({ history, match }) => {
   const submitFormData = (formData) => {
     formData.id = urlId;
 
+    if (formData.taxFileNumber) {
+      formData.taxFileNumber = parseInt(formData.taxFileNumber);
+    }
+
+    if (formData.australianBusinessNumber) {
+      formData.australianBusinessNumber = parseInt(
+        formData.australianBusinessNumber,
+      );
+    }
+
+    if (formData.idNumber) {
+      formData.idNumber = parseInt(formData.idNumber);
+    }
+
     setError('');
     setLoading(true);
     userUpdateByIdTrigger(formData);
@@ -197,12 +211,7 @@ export default ({ history, match }) => {
                 label="ABN (Australian Business Number)"
                 name="australianBusinessNumber"
                 placeholder="ABN (Australian Business Number)"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Please input ABN!',
-                  },
-                ]}
+                rules={[]}
               />
             </Col>
             <Col md={12}>
@@ -210,12 +219,7 @@ export default ({ history, match }) => {
                 label="TFN (Tax File Number)"
                 name="taxFileNumber"
                 placeholder="TFN (Tax File Number)"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Please input TFN!',
-                  },
-                ]}
+                rules={[]}
               />
             </Col>
             <Col md={12}>
