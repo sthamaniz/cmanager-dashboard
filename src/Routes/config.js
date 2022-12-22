@@ -35,6 +35,8 @@ import EmployeeRosterList from 'pages/EmployeeRoster/List';
 import RosterList from 'pages/Roster/List';
 import EmployeeInfo from 'pages/Employee/Info';
 import InventoryStockList from 'pages/InventoryStock/List';
+import InventoryStockCreate from 'pages/InventoryStock/Create';
+import InventoryServiceList from 'pages/InventoryService/List';
 
 export const routeConfig = {
   dashboard: {
@@ -168,6 +170,10 @@ export const routeConfig = {
           title: 'Stock',
           path: '/inventory-stock',
         },
+        {
+          title: 'Service',
+          path: '/inventory-service',
+        },
       ],
     },
   },
@@ -187,6 +193,18 @@ export const routeConfig = {
     type: 'private',
     path: '/inventory-stock',
     component: InventoryStockList,
+    roles: ['SUPERADMIN', 'ADMIN'],
+  },
+  inventoryStockCreate: {
+    type: 'private',
+    path: '/inventory-stock/create',
+    component: InventoryStockCreate,
+    roles: ['SUPERADMIN', 'ADMIN'],
+  },
+  InventoryServiceList: {
+    type: 'private',
+    path: '/inventory-service',
+    component: InventoryServiceList,
     roles: ['SUPERADMIN', 'ADMIN'],
   },
   //customer routes

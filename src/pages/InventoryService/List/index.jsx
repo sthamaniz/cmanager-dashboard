@@ -30,6 +30,15 @@ import Modal from 'components/Modal';
 
 import './styles.scss';
 
+const DUMMY_DATA = [
+  {
+    title: 'One',
+  },
+  {
+    title: 'Two',
+  },
+];
+
 export default ({}) => {
   const [form] = Form.useForm();
 
@@ -37,7 +46,7 @@ export default ({}) => {
 
   const {
     inventoryStocksTrigger,
-    inventoryStocksResult,
+    inventoryStockResult,
     inventoryStocksLoading,
   } = useInventoryStocks();
 
@@ -65,9 +74,7 @@ export default ({}) => {
       key: 'itemNumber',
       render: (_, record) => (
         <div className="avatar-info">
-          <Typography.Title level={5}>
-            {record.inventory.itemNumber}
-          </Typography.Title>
+          <Typography.Title level={5}>123123123</Typography.Title>
         </div>
       ),
     },
@@ -77,38 +84,24 @@ export default ({}) => {
       key: 'title',
       render: (_, record) => (
         <div className="avatar-info">
-          <Typography.Title level={5}>
-            {record.inventory.title}
-          </Typography.Title>
+          <Typography.Title level={5}>Floor Cleaner</Typography.Title>
         </div>
       ),
     },
     {
-      title: 'Quantity',
-      dataIndex: 'quantity',
-      key: 'quantity',
-      render: (value) => (
-        <Typography.Title level={5}>{value}</Typography.Title>
-      ),
-    },
-    {
-      title: 'Type',
-      dataIndex: 'type',
-      key: 'type',
-      render: (value) => (
-        <Typography.Title level={5}>
-          {value === 'IN' ? 'Entry' : 'Dispatch'}
-        </Typography.Title>
-      ),
-    },
-    {
-      title: 'Date',
+      title: 'Purchase Date',
       dataIndex: 'createdAt',
       key: 'createdAt',
       render: (value) => (
-        <Typography.Title level={5}>
-          {Moment.unix(value / 1000).format('DD MMM, YYYY')}
-        </Typography.Title>
+        <Typography.Title level={5}>15 May, 2022</Typography.Title>
+      ),
+    },
+    {
+      title: 'Service Period',
+      dataIndex: 'servicePeriod',
+      key: 'servicePeriod',
+      render: (value) => (
+        <Typography.Title level={5}>15 Days</Typography.Title>
       ),
     },
     {
@@ -136,7 +129,7 @@ export default ({}) => {
       <Card
         bordered={false}
         className="criclebox tablespace mb-24"
-        title={'Inventory Stocks'}
+        title={'Inventory Services'}
       >
         <div className="inventory">
           <div className="inventory_options">
@@ -161,12 +154,12 @@ export default ({}) => {
                     Search
                   </Button>
                 </Col>
-                <Col md={8}></Col>
-                <Col md={6}>
-                  <PrimaryButton
-                    title="Update Inventory Stock"
-                    link={routeConfig.inventoryStockCreate.path}
-                  />
+                <Col md={10}></Col>
+                <Col md={4}>
+                  {/* <PrimaryButton
+                    title="Add Inventory Stock"
+                    link={routeConfig.inventoryCreate.path}
+                  /> */}
                 </Col>
               </Row>
             </Form>
@@ -178,7 +171,7 @@ export default ({}) => {
           <div className="table-responsive">
             <Table
               columns={columns}
-              data={inventoryStocksResult}
+              data={DUMMY_DATA}
               rowKey="title"
             />
           </div>
