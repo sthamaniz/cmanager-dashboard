@@ -164,7 +164,7 @@ export default ({}) => {
                 <Col md={8}></Col>
                 <Col md={6}>
                   <PrimaryButton
-                    title="Update Inventory Stock"
+                    title="Create Inventory Stock"
                     link={routeConfig.inventoryStockCreate.path}
                   />
                 </Col>

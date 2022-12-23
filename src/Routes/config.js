@@ -169,11 +169,11 @@ export const routeConfig = {
         },
         {
           title: 'Stock',
-          path: '/inventory-stock',
+          path: '/inventory/stock',
         },
         {
           title: 'Service',
-          path: '/inventory-service',
+          path: '/inventory/service',
         },
       ],
     },
@@ -192,25 +192,25 @@ export const routeConfig = {
   },
   inventoryStock: {
     type: 'private',
-    path: '/inventory-stock',
+    path: '/inventory/stock',
     component: InventoryStockList,
     roles: ['SUPERADMIN', 'ADMIN'],
   },
   inventoryStockCreate: {
     type: 'private',
-    path: '/inventory-stock/create',
+    path: '/inventory/stock/create',
     component: InventoryStockCreate,
     roles: ['SUPERADMIN', 'ADMIN'],
   },
   inventoryService: {
     type: 'private',
-    path: '/inventory-service',
+    path: '/inventory/service',
     component: InventoryServiceList,
     roles: ['SUPERADMIN', 'ADMIN'],
   },
   inventoryServiceCreate: {
     type: 'private',
-    path: '/inventory-service/create',
+    path: '/inventory/service/create',
     component: InventoryServiceCreate,
     roles: ['SUPERADMIN', 'ADMIN'],
   },
