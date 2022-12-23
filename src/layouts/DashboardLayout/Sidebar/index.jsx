@@ -3,7 +3,7 @@ import { Menu } from 'antd';
 
 import { routeConfig, getRoutes } from 'Routes/config';
 
-import logo from 'assets/images/logo.jpg';
+import logo from 'assets/images/logo.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default ({ pathname }) => {
