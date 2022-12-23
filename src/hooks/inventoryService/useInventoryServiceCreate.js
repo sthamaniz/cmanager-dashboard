@@ -1,8 +1,8 @@
 import useGraphQLMutation from 'hooks/common/useGraphQLMutation';
 
 const query = `
-  InventoryStockCreate($inventory: String!, $note: String) {
-    inventoryStockCreate(inventory: $inventory, note: $note) {
+  InventoryServiceCreate($inventory: String!, $note: String) {
+    inventoryServiceCreate(inventory: $inventory, note: $note) {
       _id
     }
   }
@@ -11,13 +11,13 @@ const query = `
 export default () => {
   const { trigger, result, loading, error } = useGraphQLMutation({
     query,
-    key: 'inventoryStockCreate',
+    key: 'inventoryServiceCreate',
   });
 
   return {
-    inventoryStockCreateTrigger: trigger,
-    inventoryStockCreateResult: result,
-    inventoryStockCreateLoading: loading,
-    inventoryStockCreateError: error,
+    inventoryServiceCreateTrigger: trigger,
+    inventoryServiceCreateResult: result,
+    inventoryServiceCreateLoading: loading,
+    inventoryServiceCreateError: error,
   };
 };

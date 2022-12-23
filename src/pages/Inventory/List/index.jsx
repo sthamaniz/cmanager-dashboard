@@ -114,6 +114,32 @@ export default ({}) => {
       ),
     },
     {
+      title: 'Service Interval',
+      dataIndex: 'serviceInterval',
+      key: 'serviceInterval',
+      render: (_, record) => (
+        <Typography.Title level={5}>
+          {record.serviceInterval && record.serviceIntervalType
+            ? `${record.serviceInterval} ${record.serviceIntervalType}`
+            : ''}
+        </Typography.Title>
+      ),
+    },
+    {
+      title: 'Service Due Date',
+      dataIndex: 'serviceDueDate',
+      key: 'serviceDueDate',
+      render: (value) => (
+        <Typography.Title level={5}>
+          {value
+            ? Moment.unix(parseInt(value) / 1000).format(
+                'DD MMM, YYYY',
+              )
+            : ''}
+        </Typography.Title>
+      ),
+    },
+    {
       title: 'Status',
       key: 'status',
       dataIndex: 'status',

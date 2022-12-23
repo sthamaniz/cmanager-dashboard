@@ -92,7 +92,17 @@ export default ({}) => {
       ),
     },
     {
-      title: 'Date',
+      title: 'Due Date',
+      dataIndex: 'dueDate',
+      key: 'dueDate',
+      render: (value) => (
+        <Typography.Title level={5}>
+          {Moment.unix(value / 1000).format('DD MMM, YYYY')}
+        </Typography.Title>
+      ),
+    },
+    {
+      title: 'Service Date',
       dataIndex: 'createdAt',
       key: 'createdAt',
       render: (value) => (
@@ -154,7 +164,7 @@ export default ({}) => {
                 <Col md={8}></Col>
                 <Col md={6}>
                   <PrimaryButton
-                    title="Update Inventory Stock"
+                    title="Create Inventory Service"
                     link={routeConfig.inventoryServiceCreate.path}
                   />
                 </Col>

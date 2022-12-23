@@ -179,7 +179,7 @@ export default ({ history }) => {
                 </Row>
               </Col>
             )}
-            <Col md={12}>
+            <Col md={24}>
               <TextInput
                 label="Note"
                 name="note"

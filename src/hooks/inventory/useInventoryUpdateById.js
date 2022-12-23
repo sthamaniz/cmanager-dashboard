@@ -1,8 +1,8 @@
 import useGraphQLMutation from 'hooks/common/useGraphQLMutation';
 
 const query = `
-  InventoryUpdateById($itemNumber: String!, $id: String!, $title: String, $description: String, $unit: String, $lowStockQuantity: Int!, $price: Int, $status: Status) {
-    inventoryUpdateById(itemNumber: $itemNumber, id: $id, title: $title, description: $description, unit: $unit, lowStockQuantity: $lowStockQuantity, price: $price, status: $status) {
+  InventoryUpdateById($itemNumber: String!, $id: String!, $title: String, $description: String, $unit: String, $lowStockQuantity: Int!, $price: Int, $serviceIntervalType: String, $serviceInterval: Int, $status: Status) {
+    inventoryUpdateById(itemNumber: $itemNumber, id: $id, title: $title, description: $description, unit: $unit, lowStockQuantity: $lowStockQuantity, price: $price, serviceIntervalType: $serviceIntervalType, serviceInterval: $serviceInterval, status: $status) {
       _id
     }
   }

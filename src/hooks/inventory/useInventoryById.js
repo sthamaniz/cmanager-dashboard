@@ -11,6 +11,9 @@ const query = `
       quantity
       lowStockQuantity
       price
+      serviceIntervalType
+      serviceInterval
+      serviceDueDate
       status
     }
   }

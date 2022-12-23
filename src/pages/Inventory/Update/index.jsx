@@ -32,6 +32,9 @@ export default ({ history, match }) => {
           // quantity: inventoryByIdResult.quantity,
           lowStockQuantity: inventoryByIdResult.lowStockQuantity,
           price: inventoryByIdResult.price,
+          serviceIntervalType:
+            inventoryByIdResult.serviceIntervalType,
+          serviceInterval: inventoryByIdResult.serviceInterval,
           status: inventoryByIdResult.status,
         });
       }
@@ -54,6 +57,9 @@ export default ({ history, match }) => {
     }
     if (formData.price) {
       formData.price = parseInt(formData.price);
+    }
+    if (formData.serviceInterval) {
+      formData.serviceInterval = parseInt(formData.serviceInterval);
     }
     setError('');
     setLoading(true);
@@ -188,6 +194,39 @@ export default ({ history, match }) => {
                     pattern: /^(?:\d*)$/,
                     message: 'Value should contain just number',
                   },
+                ]}
+              />
+            </Col>
+            <Col md={12}>
+              <SelectInput
+                label="Service Interval Type"
+                name="serviceIntervalType"
+                placeholder="Service Interval Type"
+                rules={[]}
+                options={[
+                  { title: 'Days', value: 'days' },
+                  { title: 'Months', value: 'months' },
+                ]}
+              />
+            </Col>
+            <Col md={12}>
+              <TextInput
+                label="Service Interval"
+                name="serviceInterval"
+                placeholder="Service Interval"
+                rules={[
+                  () => ({
+                    validator(_, value) {
+                      if (value && value !== '') {
+                        if (!/^(?:\d*)$/.test(value)) {
+                          return Promise.reject(
+                            new Error('Invalid servie interval!'),
+                          );
+                        }
+                      }
+                      return Promise.resolve();
+                    },
+                  }),
                 ]}
               />
             </Col>
