@@ -1,21 +1,51 @@
 import { useEffect, useState } from 'react';
 import { Row, Col, Card, Form, Button, Alert } from 'antd';
 
+import useInventoryCategories from 'hooks/inventoryCategory/useInventoryCategories';
 import useInventoryCreate from 'hooks/inventory/useInventoryCreate';
 
 import { routeConfig } from 'Routes/config';
 
 import TextInput from 'components/Input/TextInput';
 import SelectInput from 'components/Input/SelectInput';
-import NumberInput from 'components/Input/NumberInput';
 
 import './styles.scss';
 
 export default ({ history }) => {
   const [form] = Form.useForm();
 
+  const [isServicableShown, setIsServicableShown] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
+  const {
+    inventoryCategoriesTrigger,
+    inventoryCategoriesResult,
+    inventoryCategoriesLoading,
+  } = useInventoryCategories();
+
+  useEffect(() => {
+    inventoryCategoriesTrigger();
+  }, []);
+
+  const formatInventoryCategories = () => {
+    let formattedInventoryCategories = [];
+
+    if (
+      !inventoryCategoriesLoading &&
+      inventoryCategoriesResult &&
+      inventoryCategoriesResult.length
+    ) {
+      formattedInventoryCategories = inventoryCategoriesResult.map(
+        (i) => ({
+          title: i.title,
+          value: i._id,
+        }),
+      );
+    }
+
+    return formattedInventoryCategories;
+  };
 
   const {
     inventoryCreateTrigger,
@@ -53,6 +83,20 @@ export default ({ history }) => {
       }
     }
   }, [inventoryCreateLoading, inventoryCreateResult]);
+
+  const updateIsServicableShown = (inventoryCategoryId) => {
+    if (
+      !inventoryCategoriesLoading &&
+      inventoryCategoriesResult &&
+      inventoryCategoriesResult.length
+    ) {
+      const inventoryCategory = inventoryCategoriesResult.find(
+        (ic) => ic._id.toString() === inventoryCategoryId,
+      );
+
+      setIsServicableShown(inventoryCategory.isServicable);
+    }
+  };
 
   return (
     <Card
@@ -151,40 +195,59 @@ export default ({ history }) => {
                 ]}
               />
             </Col>
-            <Col md={12}>
+            <Col md={24}>
               <SelectInput
-                label="Service Interval Type"
-                name="serviceIntervalType"
-                placeholder="Service Interval Type"
-                rules={[]}
-                options={[
-                  { title: 'Days', value: 'days' },
-                  { title: 'Months', value: 'months' },
-                ]}
-              />
-            </Col>
-            <Col md={12}>
-              <TextInput
-                label="Service Interval"
-                name="serviceInterval"
-                placeholder="Service Interval"
+                label="Inventory Category"
+                name="inventoryCategory"
+                placeholder="Inventory Category"
                 rules={[
-                  () => ({
-                    validator(_, value) {
-                      if (value && value !== '') {
-                        if (!/^(?:\d*)$/.test(value)) {
-                          return Promise.reject(
-                            new Error('Invalid servie interval!'),
-                          );
-                        }
-                      }
-                      return Promise.resolve();
-                    },
-                  }),
+                  {
+                    required: true,
+                    message: 'Please input inventory category!',
+                  },
                 ]}
+                onChange={updateIsServicableShown}
+                options={formatInventoryCategories()}
               />
             </Col>
-            <Col md={12}>
+            {isServicableShown ? (
+              <>
+                <Col md={12}>
+                  <SelectInput
+                    label="Service Interval Type"
+                    name="serviceIntervalType"
+                    placeholder="Service Interval Type"
+                    rules={[]}
+                    options={[
+                      { title: 'Days', value: 'days' },
+                      { title: 'Months', value: 'months' },
+                    ]}
+                  />
+                </Col>
+                <Col md={12}>
+                  <TextInput
+                    label="Service Interval"
+                    name="serviceInterval"
+                    placeholder="Service Interval"
+                    rules={[
+                      () => ({
+                        validator(_, value) {
+                          if (value && value !== '') {
+                            if (!/^(?:\d*)$/.test(value)) {
+                              return Promise.reject(
+                                new Error('Invalid servie interval!'),
+                              );
+                            }
+                          }
+                          return Promise.resolve();
+                        },
+                      }),
+                    ]}
+                  />
+                </Col>
+              </>
+            ) : null}
+            <Col md={24}>
               <SelectInput
                 label="Status"
                 name="status"

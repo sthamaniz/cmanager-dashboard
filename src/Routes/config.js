@@ -34,6 +34,9 @@ import CustomerBookingCreate from 'pages/CustomerBooking/Create';
 import EmployeeRosterList from 'pages/EmployeeRoster/List';
 import RosterList from 'pages/Roster/List';
 import EmployeeInfo from 'pages/Employee/Info';
+import InventoryCategoryList from 'pages/InventoryCategory/List';
+import InventoryCategoryCreate from 'pages/InventoryCategory/Create';
+import InventoryCategoryUpdate from 'pages/InventoryCategory/Update';
 import InventoryStockList from 'pages/InventoryStock/List';
 import InventoryStockCreate from 'pages/InventoryStock/Create';
 import InventoryServiceList from 'pages/InventoryService/List';
@@ -164,6 +167,10 @@ export const routeConfig = {
       icon: faWarehouse,
       child: [
         {
+          title: 'Category',
+          path: '/inventory/category',
+        },
+        {
           title: 'List',
           path: '/inventory',
         },
@@ -188,6 +195,24 @@ export const routeConfig = {
     type: 'private',
     path: '/inventory/:id/update',
     component: InventoryUpdate,
+    roles: ['SUPERADMIN', 'ADMIN'],
+  },
+  inventoryCategory: {
+    type: 'private',
+    path: '/inventory/category',
+    component: InventoryCategoryList,
+    roles: ['SUPERADMIN', 'ADMIN'],
+  },
+  inventoryCategoryCreate: {
+    type: 'private',
+    path: '/inventory/category/create',
+    component: InventoryCategoryCreate,
+    roles: ['SUPERADMIN', 'ADMIN'],
+  },
+  inventoryCategoryUpdate: {
+    type: 'private',
+    path: '/inventory/category/:id/update',
+    component: InventoryCategoryUpdate,
     roles: ['SUPERADMIN', 'ADMIN'],
   },
   inventoryStock: {
