@@ -98,14 +98,6 @@ export default ({}) => {
       ),
     },
     {
-      title: 'Price',
-      dataIndex: 'price',
-      key: 'price',
-      render: (value) => (
-        <Typography.Title level={5}>{value}</Typography.Title>
-      ),
-    },
-    {
       title: 'Low Stock Quantity',
       dataIndex: 'lowStockQuantity',
       key: 'lowStockQuantity',

@@ -103,14 +103,6 @@ export default ({}) => {
       ),
     },
     {
-      title: 'Gender',
-      key: 'gender',
-      dataIndex: 'gender',
-      render: (value) => (
-        <Typography.Title level={5}>{value}</Typography.Title>
-      ),
-    },
-    {
       title: 'Status',
       key: 'status',
       dataIndex: 'status',
@@ -212,7 +204,7 @@ export default ({}) => {
           <div className="table-responsive">
             <Table
               columns={columns}
-              data={usersResult}
+              data={(usersResult && usersResult.data) || []}
               rowKey="email"
             />
           </div>

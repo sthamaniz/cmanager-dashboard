@@ -167,26 +167,6 @@ export default ({ history }) => {
                 },
               ]}
             />
-            <SelectInput
-              label="Source"
-              name="source"
-              placeholder="Source"
-              rules={[
-                {
-                  required: true,
-                  message: 'Please input source!',
-                },
-              ]}
-              options={[
-                { title: 'Facebook Page', value: 'FACEBOOK_PAGE' },
-                {
-                  title: 'Facebook Profile',
-                  value: 'FACEBOOK_PROFILE',
-                },
-                { title: 'Webiste', value: 'WEBISTE' },
-                { title: 'Phone', value: 'PHONE' },
-              ]}
-            />
             {error !== '' ? (
               <Form.Item>
                 <Alert message={error} type="error" />

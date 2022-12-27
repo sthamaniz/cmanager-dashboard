@@ -30,9 +30,6 @@ export default ({ history }) => {
     if (formData.lowStockQuantity) {
       formData.lowStockQuantity = parseInt(formData.lowStockQuantity);
     }
-    if (formData.price) {
-      formData.price = parseInt(formData.price);
-    }
     if (formData.serviceInterval) {
       formData.serviceInterval = parseInt(formData.serviceInterval);
     }
@@ -146,23 +143,6 @@ export default ({ history }) => {
                   {
                     required: true,
                     message: 'Please input lowStockQuantity!',
-                  },
-                  {
-                    pattern: /^(?:\d*)$/,
-                    message: 'Value should contain just number',
-                  },
-                ]}
-              />
-            </Col>
-            <Col md={12}>
-              <TextInput
-                label="Price"
-                name="price"
-                placeholder="Price"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Please input price!',
                   },
                   {
                     pattern: /^(?:\d*)$/,

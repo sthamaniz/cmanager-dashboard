@@ -65,8 +65,13 @@ export default ({ history }) => {
   const formatCustomers = () => {
     let formattedCustomers = [];
 
-    if (!usersLoading && usersResult && usersResult.length) {
-      formattedCustomers = usersResult.map((u) => ({
+    if (
+      !usersLoading &&
+      usersResult &&
+      usersResult.data &&
+      usersResult.data.length
+    ) {
+      formattedCustomers = usersResult.data.map((u) => ({
         title: `${u.firstName} ${u.lastName}`,
         value: u._id,
       }));
@@ -81,9 +86,10 @@ export default ({ history }) => {
     if (
       !employeesLoading &&
       employeesResult &&
-      employeesResult.length
+      employeesResult.data &&
+      employeesResult.data.length
     ) {
-      formattedEmployees = employeesResult.map((u) => ({
+      formattedEmployees = employeesResult.data.map((u) => ({
         title: `${u.firstName} ${u.lastName}`,
         value: u._id,
       }));

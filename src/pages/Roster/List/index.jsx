@@ -78,72 +78,77 @@ export default ({}) => {
   };
 
   useEffect(() => {
-    if (!usersLoading && usersResult) {
-      let newColumns = [
-        {
-          title: 'S.No.',
-          dataIndex: 'sno',
-          key: 'sno',
-          render: (_, __, index) => (
-            <Typography.Title level={5}>{index + 1}</Typography.Title>
-          ),
-        },
-        {
-          title: 'Customer',
-          dataIndex: 'customer',
-          key: 'customer',
-          render: (_, row) => (
-            <div className="avatar-info">
-              <Typography.Title level={5}>
-                {row.booking?.customer?.firstName}{' '}
-                {row.booking?.customer?.lastName}
-              </Typography.Title>
-            </div>
-          ),
-        },
-        {
-          title: 'Address',
-          dataIndex: 'address',
-          key: 'address',
-          render: (_, row) => (
-            <div className="avatar-info">
-              <Typography.Title level={5}>
-                {row.booking?.customer?.address}
-              </Typography.Title>
-            </div>
-          ),
-        },
-        {
-          title: 'Service',
-          dataIndex: 'service',
-          key: 'service',
-          render: (_, row) => (
-            <div className="avatar-info">
-              <Typography.Title level={5}>
-                {row.booking?.service?.title}
-              </Typography.Title>
-            </div>
-          ),
-        },
-        {
-          title: 'Total',
-          dataIndex: 'hours',
-          key: 'hours',
-          render: (_, row) => (
-            <div className="avatar-info">
-              <Typography.Title level={5}>
-                {row.booking &&
-                row.booking.customer &&
-                row.booking.customer.hours
-                  ? row.booking.customer.hours
-                  : 0}
-              </Typography.Title>
-            </div>
-          ),
-        },
-      ];
+    let newColumns = [
+      {
+        title: 'S.No.',
+        dataIndex: 'sno',
+        key: 'sno',
+        render: (_, __, index) => (
+          <Typography.Title level={5}>{index + 1}</Typography.Title>
+        ),
+      },
+      {
+        title: 'Customer',
+        dataIndex: 'customer',
+        key: 'customer',
+        render: (_, row) => (
+          <div className="avatar-info">
+            <Typography.Title level={5}>
+              {row.booking?.customer?.firstName}{' '}
+              {row.booking?.customer?.lastName}
+            </Typography.Title>
+          </div>
+        ),
+      },
+      {
+        title: 'Address',
+        dataIndex: 'address',
+        key: 'address',
+        render: (_, row) => (
+          <div className="avatar-info">
+            <Typography.Title level={5}>
+              {row.booking?.customer?.address}
+            </Typography.Title>
+          </div>
+        ),
+      },
+      {
+        title: 'Service',
+        dataIndex: 'service',
+        key: 'service',
+        render: (_, row) => (
+          <div className="avatar-info">
+            <Typography.Title level={5}>
+              {row.booking?.service?.title}
+            </Typography.Title>
+          </div>
+        ),
+      },
+      {
+        title: 'Total',
+        dataIndex: 'hours',
+        key: 'hours',
+        render: (_, row) => (
+          <div className="avatar-info">
+            <Typography.Title level={5}>
+              {row.booking &&
+              row.booking.customer &&
+              row.booking.customer.hours
+                ? row.booking.customer.hours
+                : 0}
+            </Typography.Title>
+          </div>
+        ),
+      },
+    ];
 
-      usersResult.forEach((ur) => {
+    if (
+      !usersLoading &&
+      usersResult &&
+      usersResult.data &&
+      usersResult.data.length
+    ) {
+      usersResult.data.forEach((ur) => {
         newColumns.push({
           title: `${ur.firstName} ${ur.lastName}`,
           dataIndex: ur._id,
@@ -174,9 +179,9 @@ export default ({}) => {
           />
         ),
       });
-
-      setColumns(newColumns);
     }
+
+    setColumns(newColumns);
   }, [usersLoading, usersResult]);
 
   return (

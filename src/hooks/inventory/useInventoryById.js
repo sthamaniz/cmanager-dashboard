@@ -10,7 +10,6 @@ const query = `
       unit
       quantity
       lowStockQuantity
-      price
       serviceIntervalType
       serviceInterval
       serviceDueDate
