@@ -225,6 +225,14 @@ export default ({ history }) => {
                     title: 'Driving License',
                     value: 'DRIVING_LICENSE',
                   },
+                  {
+                    title: 'Passport',
+                    value: 'PASSPORT',
+                  },
+                  {
+                    title: 'Photo Id',
+                    value: 'PHOTO_ID',
+                  },
                 ]}
               />
             </Col>
