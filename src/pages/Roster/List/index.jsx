@@ -2,14 +2,16 @@ import { useState, useEffect } from 'react';
 import { Card, Typography, Row, Col } from 'antd';
 import Moment from 'moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import useRosters from 'hooks/roster/useRosters';
 import useUsers from 'hooks/user/useUsers';
+import useRosterDeleteById from 'hooks/roster/useRosterDeleteById';
 
 import Table from 'components/Table';
 import Loader from 'components/Loader';
 import DateInput from 'components/Input/DateInput';
+import Modal from 'components/Modal';
 import Detail from '../Detail';
 import ExcelOptions from '../ExcelOptions';
 
@@ -22,6 +24,7 @@ export default ({}) => {
     Moment().add(1, 'days'),
   ]);
   const [selectedDetail, setSelectedDetail] = useState({});
+  const [deleteId, setDeleteId] = useState('');
 
   const { rostersTrigger, rostersResult, rostersLoading } =
     useRosters();
@@ -47,6 +50,9 @@ export default ({}) => {
       });
     }
   }, [rostersLoading, rostersResult]);
+
+  const { rosterDeleteByIdTrigger, rosterDeleteByIdLoading } =
+    useRosterDeleteById();
 
   const getEmployeeTime = (
     customerHours,
@@ -172,11 +178,22 @@ export default ({}) => {
         key: 'action',
         dataIndex: 'action',
         render: (_, record) => (
-          <FontAwesomeIcon
-            icon={faEye}
-            onClick={() => setSelectedDetail(record)}
-            style={{ cursor: 'pointer' }}
-          />
+          <>
+            <FontAwesomeIcon
+              icon={faEye}
+              onClick={() => setSelectedDetail(record)}
+              style={{
+                color: '#324565',
+                marginRight: '5px',
+                cursor: 'pointer',
+              }}
+            />
+            <FontAwesomeIcon
+              icon={faTrash}
+              style={{ color: '#324565', cursor: 'pointer' }}
+              onClick={() => setDeleteId(`${record._id}`)}
+            />
+          </>
         ),
       });
     }
@@ -256,6 +273,14 @@ export default ({}) => {
       <Detail
         selectedDetail={selectedDetail}
         setSelectedDetail={setSelectedDetail}
+      />
+      <Modal
+        isModalVisible={deleteId && deleteId !== ''}
+        title="Are You Sure?"
+        body={'You cannot undo this once deleted.'}
+        handleOK={() => rosterDeleteByIdTrigger({ id: deleteId })}
+        loading={rosterDeleteByIdLoading}
+        handleCancel={() => setDeleteId('')}
       />
     </>
   );

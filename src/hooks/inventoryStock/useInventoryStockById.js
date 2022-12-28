@@ -12,7 +12,10 @@ const query = `
         description
         unit
         quantity
-        price
+        lowStockQuantity
+        serviceIntervalType
+        serviceInterval
+        serviceDueDate
         status
       }
       type
