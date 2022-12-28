@@ -33,6 +33,7 @@ import './styles.scss';
 export default ({}) => {
   const [form] = Form.useForm();
 
+  const [selectedDate, setSelectedDate] = useState([]);
   const [deleteId, setDeleteId] = useState('');
 
   const {
@@ -42,8 +43,16 @@ export default ({}) => {
   } = useInventoryStocks();
 
   useEffect(() => {
-    inventoryStocksTrigger();
-  }, []);
+    let variables = {};
+    if (selectedDate && selectedDate.length > 0) {
+      variables = {
+        startDate: selectedDate[0],
+        endDate: selectedDate[1],
+      };
+    }
+
+    inventoryStocksTrigger(variables);
+  }, [selectedDate]);
 
   const {
     inventoryStockDeleteByIdTrigger,
@@ -161,7 +170,15 @@ export default ({}) => {
                     Search
                   </Button>
                 </Col>
-                <Col md={8}></Col>
+                <Col md={8}>
+                  <DateInput
+                    name="date"
+                    value
+                    onChange={(date) => setSelectedDate(date)}
+                    defaultValue={selectedDate}
+                    range={true}
+                  />
+                </Col>
                 <Col md={6}>
                   <PrimaryButton
                     title="Create Inventory Stock"

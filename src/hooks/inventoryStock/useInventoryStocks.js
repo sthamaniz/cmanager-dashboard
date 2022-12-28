@@ -1,8 +1,8 @@
 import useGraphQLLazyQuery from 'hooks/common/useGraphQLLazyQuery';
 
 export const query = `
-  InventoryStocks {
-    inventoryStocks {
+  InventoryStocks($startDate: String, $endDate: String) {
+    inventoryStocks(startDate: $startDate, endDate: $endDate) {
       _id
       inventory {
         _id
