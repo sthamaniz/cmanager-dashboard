@@ -275,7 +275,19 @@ export default ({ history, match }) => {
                       },
                     ]}
                     options={[
+                      { title: 'One Off', value: 'ONE_OFF' },
                       { title: 'Daily', value: 'DAILY' },
+                      { title: 'Weekly', value: 'WEEKLY' },
+                      { title: 'Fortnightly', value: 'FORTNIGHTLY' },
+                      {
+                        title: 'Twice Weekly',
+                        value: 'TWICE_WEEKLY',
+                      },
+                      {
+                        title: 'Three Weekly',
+                        value: 'THREE_WEEKLY',
+                      },
+                      { title: 'Four Weekly', value: 'FOUR_WEEKLY' },
                       {
                         title: 'Monthly',
                         value: 'MONTHLY',

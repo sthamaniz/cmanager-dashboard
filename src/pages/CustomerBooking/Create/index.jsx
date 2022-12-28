@@ -172,6 +172,7 @@ export default ({ history }) => {
                       },
                     ]}
                     options={[
+                      { title: 'One Off', value: 'ONE_OFF' },
                       { title: 'Daily', value: 'DAILY' },
                       { title: 'Weekly', value: 'WEEKLY' },
                       { title: 'Fortnightly', value: 'FORTNIGHTLY' },
