@@ -24,6 +24,7 @@ import { routeConfig } from 'Routes/config';
 
 import Table from 'components/Table';
 import TextInput from 'components/Input/TextInput';
+import DateInput from 'components/Input/DateInput';
 import PrimaryButton from 'components/Button/PrimaryButton';
 import Loader from 'components/Loader';
 import Modal from 'components/Modal';
@@ -214,5 +215,3 @@ export default ({}) => {
     </>
   );
 };
-
-// /prod/admin-dashboard/images/ticket/event/eventId
