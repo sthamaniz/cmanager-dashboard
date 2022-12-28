@@ -1,5 +1,7 @@
 import useGraphQLMutation from 'hooks/common/useGraphQLMutation';
 
+import { query as inventoryServicesQuery } from './useInventoryServices';
+
 const query = `
   InventoryServiceDeleteById($id: String!) {
     inventoryServiceDeleteById(id: $id) {
@@ -12,6 +14,7 @@ export default () => {
   const { trigger, result, loading, error } = useGraphQLMutation({
     query,
     key: 'inventoryServiceDeleteById',
+    refetchQuery: inventoryServicesQuery,
   });
 
   return {

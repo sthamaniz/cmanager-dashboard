@@ -1,6 +1,6 @@
 import useGraphQLLazyQuery from 'hooks/common/useGraphQLLazyQuery';
 
-const query = `
+export const query = `
   InventoryServices {
     inventoryServices {
       _id

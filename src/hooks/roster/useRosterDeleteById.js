@@ -1,5 +1,7 @@
 import useGraphQLMutation from 'hooks/common/useGraphQLMutation';
 
+import { query as rostersQuery } from './useRosters';
+
 const query = `
   RosterDeleteById($id: String!) {
     rosterDeleteById(id: $id) {
@@ -8,10 +10,12 @@ const query = `
   }
 `;
 
-export default () => {
+export default ({ refetchVariables }) => {
   const { trigger, result, loading, error } = useGraphQLMutation({
     query,
     key: 'rosterDeleteById',
+    refetchQuery: rostersQuery,
+    refetchVariables: refetchVariables || {},
   });
 
   return {

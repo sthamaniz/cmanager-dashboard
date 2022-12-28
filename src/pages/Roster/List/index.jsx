@@ -51,8 +51,29 @@ export default ({}) => {
     }
   }, [rostersLoading, rostersResult]);
 
-  const { rosterDeleteByIdTrigger, rosterDeleteByIdLoading } =
-    useRosterDeleteById();
+  const {
+    rosterDeleteByIdTrigger,
+    rosterDeleteByIdResult,
+    rosterDeleteByIdLoading,
+    rosterDeleteByIdError,
+  } = useRosterDeleteById({
+    refetchVariables: {
+      startDate: selectedDate[0],
+      endDate: selectedDate[1],
+    },
+  });
+
+  useEffect(() => {
+    if (!rosterDeleteByIdLoading) {
+      if (rosterDeleteByIdResult || rosterDeleteByIdError) {
+        setDeleteId('');
+      }
+    }
+  }, [
+    rosterDeleteByIdLoading,
+    rosterDeleteByIdResult,
+    rosterDeleteByIdError,
+  ]);
 
   const getEmployeeTime = (
     customerHours,

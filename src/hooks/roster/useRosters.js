@@ -1,6 +1,6 @@
 import useGraphQLLazyQuery from 'hooks/common/useGraphQLLazyQuery';
 
-const query = `
+export const query = `
   Rosters($startDate: String, $endDate: String) {
     rosters(startDate: $startDate, endDate: $endDate) {
       date
