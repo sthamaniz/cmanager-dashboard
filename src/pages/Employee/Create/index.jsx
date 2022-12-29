@@ -7,8 +7,11 @@ import { routeConfig } from 'Routes/config';
 
 import * as validation from 'utils/validation';
 
+import { fileUpload } from 'services/file';
+
 import TextInput from 'components/Input/TextInput';
 import SelectInput from 'components/Input/SelectInput';
+import ImageUpload from 'components/Input/ImageUpload';
 
 import './styles.scss';
 
@@ -43,7 +46,16 @@ export default ({ history }) => {
 
     setError('');
     setLoading(true);
-    userRegisterTrigger(formData);
+
+    if (formData.idImage) {
+      fileUpload('id_image', formData.idImage).then((res) => {
+        formData.idImage = res.data;
+
+        userRegisterTrigger(formData);
+      });
+    } else {
+      userRegisterTrigger(formData);
+    }
   };
 
   useEffect(() => {
@@ -212,7 +224,7 @@ export default ({ history }) => {
             <Col md={12}>
               <SelectInput
                 label="ID Type"
-                name="isType"
+                name="idType"
                 placeholder="ID Type"
                 rules={[
                   {
@@ -247,6 +259,14 @@ export default ({ history }) => {
                     message: 'Please input ID Number!',
                   },
                 ]}
+              />
+            </Col>
+            <Col md={24}>
+              <ImageUpload
+                form={form}
+                label="Id Image"
+                name="idImage"
+                rules={[]}
               />
             </Col>
             <Col md={24}>

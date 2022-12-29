@@ -28,6 +28,7 @@ import DateInput from 'components/Input/DateInput';
 import PrimaryButton from 'components/Button/PrimaryButton';
 import Loader from 'components/Loader';
 import Modal from 'components/Modal';
+import ExcelOptions from '../ExcelOptions';
 
 import './styles.scss';
 
@@ -171,7 +172,7 @@ export default ({}) => {
                     Search
                   </Button>
                 </Col>
-                <Col md={8}>
+                <Col md={6}>
                   <DateInput
                     name="date"
                     value
@@ -180,7 +181,13 @@ export default ({}) => {
                     range={true}
                   />
                 </Col>
-                <Col md={6}>
+                <Col md={3}>
+                  <ExcelOptions
+                    loading={inventoryStocksLoading}
+                    inventoryStockData={inventoryStocksResult}
+                  />
+                </Col>
+                <Col md={5}>
                   <PrimaryButton
                     title="Create Inventory Stock"
                     link={routeConfig.inventoryStockCreate.path}

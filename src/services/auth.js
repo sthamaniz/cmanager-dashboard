@@ -5,8 +5,6 @@ import {
   STORAGE_KEYS,
 } from 'services/storage';
 
-import { routeConfig } from 'Routes/config';
-
 export const authenticate = (accessToken, user) => {
   setValueOf(STORAGE_KEYS.ACCESS_TOKEN, accessToken);
   setValueOf(STORAGE_KEYS.USER_DETAIL, JSON.stringify(user));

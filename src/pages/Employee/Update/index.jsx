@@ -8,8 +8,11 @@ import { routeConfig } from 'Routes/config';
 
 import * as validation from 'utils/validation';
 
+import { fileUpload } from 'services/file';
+
 import TextInput from 'components/Input/TextInput';
 import SelectInput from 'components/Input/SelectInput';
+import ImageUpload from 'components/Input/ImageUpload';
 import Loader from 'components/Loader';
 
 import './styles.scss';
@@ -37,6 +40,7 @@ export default ({ history, match }) => {
           taxFileNumber: userByIdResult.taxFileNumber,
           idType: userByIdResult.idType,
           idNumber: userByIdResult.idNumber,
+          idImage: userByIdResult.idImage,
           status: userByIdResult.status,
         });
       }
@@ -68,7 +72,16 @@ export default ({ history, match }) => {
 
     setError('');
     setLoading(true);
-    userUpdateByIdTrigger(formData);
+
+    if (formData.idImage instanceof File) {
+      fileUpload('id_image', formData.idImage).then((res) => {
+        formData.idImage = res.data;
+
+        userUpdateByIdTrigger(formData);
+      });
+    } else {
+      userUpdateByIdTrigger(formData);
+    }
   };
 
   useEffect(() => {
@@ -260,6 +273,14 @@ export default ({ history, match }) => {
                     message: 'Please input ID Number!',
                   },
                 ]}
+              />
+            </Col>
+            <Col md={24}>
+              <ImageUpload
+                form={form}
+                label="Id Image"
+                name="idImage"
+                rules={[]}
               />
             </Col>
             <Col md={24}>

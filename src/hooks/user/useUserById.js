@@ -17,6 +17,7 @@ const query = `
       taxFileNumber
       idType
       idNumber
+      idImage
       status
     }
   }
