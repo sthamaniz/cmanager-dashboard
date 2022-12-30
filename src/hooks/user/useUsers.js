@@ -21,6 +21,7 @@ export const query = `
         taxFileNumber
         idType
         idNumber
+        emergencyContactNumber
         status
       }
     }

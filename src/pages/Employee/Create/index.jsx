@@ -270,6 +270,19 @@ export default ({ history }) => {
               />
             </Col>
             <Col md={24}>
+              <TextInput
+                label="Emergency Contact Number"
+                name="emergencyContactNumber"
+                placeholder="Emergency Contact Number"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input Emergency Contact Number!',
+                  },
+                ]}
+              />
+            </Col>
+            <Col md={24}>
               <SelectInput
                 label="Status"
                 name="status"
