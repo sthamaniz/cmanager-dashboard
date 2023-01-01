@@ -196,7 +196,7 @@ export default ({ history }) => {
                     title: 'Facebook Profile',
                     value: 'FACEBOOK_PROFILE',
                   },
-                  { title: 'Webiste', value: 'WEBISTE' },
+                  { title: 'Website', value: 'WEBSITE' },
                   { title: 'Phone', value: 'PHONE' },
                 ]}
               />

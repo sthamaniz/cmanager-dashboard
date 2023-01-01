@@ -18,6 +18,7 @@ const query = `
       idType
       idNumber
       idImage
+      emergencyContactName
       emergencyContactNumber
       status
     }
