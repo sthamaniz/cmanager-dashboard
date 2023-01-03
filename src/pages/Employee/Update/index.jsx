@@ -41,6 +41,7 @@ export default ({ history, match }) => {
           idType: userByIdResult.idType,
           idNumber: userByIdResult.idNumber,
           idImage: userByIdResult.idImage,
+          emergencyContactName: userByIdResult.emergencyContactName,
           emergencyContactNumber:
             userByIdResult.emergencyContactNumber,
           status: userByIdResult.status,
@@ -285,7 +286,20 @@ export default ({ history, match }) => {
                 rules={[]}
               />
             </Col>
-            <Col md={24}>
+            <Col md={12}>
+              <TextInput
+                label="Emergency Contact Name"
+                name="emergencyContactName"
+                placeholder="Emergency Contact Name"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input Emergency Contact Name!',
+                  },
+                ]}
+              />
+            </Col>
+            <Col md={12}>
               <TextInput
                 label="Emergency Contact Number"
                 name="emergencyContactNumber"
