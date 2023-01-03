@@ -4,6 +4,8 @@ import { Row, Col, Card, Form, Button, Alert } from 'antd';
 import useUserById from 'hooks/user/useUserById';
 import useUserUpdateById from 'hooks/user/useUserUpdateById';
 
+import config from 'configs/config';
+
 import { routeConfig } from 'Routes/config';
 
 import * as validation from 'utils/validation';
@@ -283,6 +285,11 @@ export default ({ history, match }) => {
                 form={form}
                 label="Id Image"
                 name="idImage"
+                initialPreview={
+                  userByIdResult && userByIdResult.idImage
+                    ? `${config.assetURL}/${userByIdResult.idImage}`
+                    : ''
+                }
                 rules={[]}
               />
             </Col>
