@@ -41,6 +41,9 @@ import InventoryStockList from 'pages/InventoryStock/List';
 import InventoryStockCreate from 'pages/InventoryStock/Create';
 import InventoryServiceList from 'pages/InventoryService/List';
 import InventoryServiceCreate from 'pages/InventoryService/Create';
+import FeedbackList from 'pages/Feedback/List';
+import CustomerFeedbackList from 'pages/CustomerFeedback/List';
+import CustomerFeedbackCreate from 'pages/CustomerFeedback/Create';
 
 export const routeConfig = {
   dashboard: {
@@ -239,6 +242,16 @@ export const routeConfig = {
     component: InventoryServiceCreate,
     roles: ['SUPERADMIN', 'ADMIN'],
   },
+  feedback: {
+    type: 'private',
+    path: '/feeedback',
+    component: FeedbackList,
+    roles: ['SUPERADMIN', 'ADMIN'],
+    sidebar: {
+      title: 'Feedback',
+      icon: faClipboard,
+    },
+  },
   //customer routes
   customerBooking: {
     type: 'private',
@@ -254,6 +267,22 @@ export const routeConfig = {
     type: 'private',
     path: '/my-booking/create',
     component: CustomerBookingCreate,
+    roles: ['CUSTOMER'],
+  },
+  customerFeedback: {
+    type: 'private',
+    path: '/my-feedback',
+    component: CustomerFeedbackList,
+    roles: ['CUSTOMER'],
+    sidebar: {
+      title: 'My Feedback',
+      icon: faUserCheck,
+    },
+  },
+  customerFeedbackCreate: {
+    type: 'private',
+    path: '/my-feedback/create',
+    component: CustomerFeedbackCreate,
     roles: ['CUSTOMER'],
   },
   //employee routes

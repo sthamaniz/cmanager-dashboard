@@ -78,7 +78,7 @@ export default ({}) => {
       render: (_, record) => (
         <div className="avatar-info">
           <Typography.Title level={5}>
-            {record.firstName} {record.lastName}
+            {record.firstName || ''} {record.lastName || ''}
           </Typography.Title>
         </div>
       ),
