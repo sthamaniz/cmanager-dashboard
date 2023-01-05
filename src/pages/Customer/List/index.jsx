@@ -81,7 +81,7 @@ export default ({}) => {
       render: (_, record) => (
         <div className="avatar-info">
           <Typography.Title level={5}>
-            {record.firstName} {record.lastName}
+            {record.firstName || ''} {record.lastName || ''}
           </Typography.Title>
         </div>
       ),
@@ -216,7 +216,7 @@ export default ({}) => {
         body={'You cannot undo this once deleted.'}
         handleOK={() => userDeleteByIdTrigger({ id: deleteId })}
         loading={userDeleteByIdLoading}
-        handleCancel={() => D('')}
+        handleCancel={() => setDeleteId('')}
       />
       <Notification
         selectedCustomer={selectedCustomer}
